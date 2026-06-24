@@ -44,6 +44,14 @@ export async function getUser() {
   return user
 }
 
+export async function updateProfile(metadata) {
+  const { data, error } = await supabase.auth.updateUser({
+    data: metadata
+  })
+  if (error) throw error
+  return data.user
+}
+
 // ========== RELATIONSHIP INFO ==========
 
 export async function getRelationshipInfo() {
